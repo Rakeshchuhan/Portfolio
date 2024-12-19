@@ -1,6 +1,6 @@
 <template>
   <v-app-bar>
-    <v-toolbar-title>My Portfolio</v-toolbar-title>
+    <v-toolbar-title>Rakesh</v-toolbar-title>
     <router-link to="/homepage">
       <v-btn text class="hover-blue" color="black">Home</v-btn>
     </router-link>

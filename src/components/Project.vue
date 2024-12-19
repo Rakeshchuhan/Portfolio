@@ -1,126 +1,136 @@
 <template>
   <AppBar />
-  <v-container fluid class="pro">
-    <h1 class="text-center">Projects</h1>
-    
-    <!-- Sort Option -->
-    <v-row justify="center" class="my-4">
-      <v-btn-toggle v-model="sortOrder" color="primary" dense>
-        <v-btn value="latest">Latest</v-btn>
-        <v-btn value="oldest">All</v-btn>
-      </v-btn-toggle>
-    </v-row>
-    <br />
-    
-    <!-- Project Cards -->
-    <v-row>
-      <v-col v-for="project in sortedProjects" :key="project.id" cols="12" md="4">
-        <v-card 
-          class="project-card" 
-          hover 
-          :style="{ backgroundImage: `url(${project.image})` }"
-        >
-          <!-- Overlay for Text Readability -->
-          <div class="overlay">
-            <v-card-title class="white--text">{{ project.title }}</v-card-title>
-            <v-card-subtitle class="white--text">{{ project.date }}</v-card-subtitle>
-            <v-card-text class="white--text">{{ project.description }}</v-card-text>
-            <v-card-actions>
-              <v-btn color="white" text>View Project</v-btn>
-            </v-card-actions>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
+  <v-container fluid >
+      <!-- Page Heading -->
+      <h1 class="text-center">Projects</h1>
+
+      <!-- Tabs -->
+      <v-tabs v-model="currentTab" background-color="primary" dark>
+          <v-tab @click="currentTab = 'all'">All</v-tab>
+          <v-tab @click="currentTab = 'latest'">Latest</v-tab>
+          <v-tab @click="currentTab = 'login'">Login</v-tab>
+      </v-tabs>
+
+      <!-- Projects -->
+      <v-row>
+          <!-- Loop through the filtered cards -->
+          <v-col v-for="(card, index) in filteredCards" :key="index" cols="12" md="6" class="d-flex justify-center">
+              <v-card class="project-card" elevation="6" style="width: 100%; height: 400px; max-width: 700px;">
+                  <v-img :src="card.image" height="325px" width="100%" cover></v-img>
+                  <div class="overlay">
+                      <v-card-text >{{ card.description }}</v-card-text>
+                  </div>
+              </v-card>
+          </v-col>
+      </v-row>
   </v-container>
 </template>
 
 <script>
-import AppBar from "@/Layout/AppBar.vue";
+  import AppBar from "@/Layout/AppBar.vue";
+  import loginImage from "@/assets/image/login.png";
+  import login2Image from "@/assets/image/login2.png";
+  import formImage from "@/assets/image/form.png";
+  import modulesImage from "@/assets/image/modules.png";
+  import dsImage from "@/assets/image/ds.jpg";
+  import oldImage from "@/assets/image/old-login-page.jpg";
 
-export default {
-  components: {
-    AppBar,
-  },
-  name: "Project",
-  data() {
-    return {
-      sortOrder: "latest",
-      projects: [
-        {
-          id: 1,
-          title: "Login Page ",
-          date: "2023-09-15",
-          description: "Create a new project",
-          image: "https://media.istockphoto.com/id/1071047018/vector/login-form-user-interface-vector.jpg?s=612x612&w=0&k=20&c=111C1SLafMRbYr-K_FdU31uk_ybUc8QleVxGaRP2I8Y="
-        
-        },
-        {
-          id: 2,
-          title: "Project 2",
-          date: "2023-06-10",
-          description: "Description of Project 2",
-          image: "https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        },
-        {
-          id: 3,
-          title: "Flutter Project",
-          date: "2022-12-05",
-          description: "Create Module",
-          image: "https://images.pexels.com/photos/20694602/pexels-photo-20694602/free-photo-of-close-up-of-a-smartphone-screen-displaying-a-python-code.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        },
-        // Add more projects as needed
-      ],
-    };
-  },
-  computed: {
-    sortedProjects() {
-      return this.sortOrder === "latest"
-        ? this.projects.slice().sort((a, b) => new Date(b.date) - new Date(a.date))
-        : this.projects.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
-    }
-  }
-};
+  export default {
+      components: {
+          AppBar,
+      },
+      data() {
+          return {
+              currentTab: "all", // Default tab
+              // Array of cards with multiple images for each card
+              cards: [
+                  {
+                    
+                      description: "Login Page",
+                      image: loginImage, 
+                      category: "login",
+                  },
+                  {
+                      title: "Flutter Project",
+                      description: "login page",
+                      image: loginImage,  // Image for this card
+                      date: "2024-06-01",
+                      category: "latest",
+                  },
+                  {
+                     
+                      description: "Module",
+                      image: modulesImage, // Image for this card
+                      date: "2022-12-15",
+                      category: "all",
+                  },
+                  // Add more cards here
+                  {
+                      title: "New Login Page",
+                      description: "Login Module",
+                      image: login2Image, // Image for this card
+                      category: "login",
+                  },
+                  {
+                      title: "New Login Page",
+                      description: "Registrayiob Form Login Module",
+                      image: formImage, // Image for this card
+                      category: "login",
+                  },
+                  {
+                      title: "React Project",
+                      description: "React Latest Module",
+                      image: dsImage, // Image for this card
+                      date: "2024-07-01",
+                      category: "latest",
+                  },
+                  {
+                      title: "Old React Page",
+                      description: "Old React Module",
+                      image: oldImage, // Image for this card
+                      date: "2021-10-15",
+                      category: "all",
+                  },
+              ],
+          };
+      },
+      computed: {
+          filteredCards() {
+              if (this.currentTab === "all") {
+                  return this.cards;
+              }
+              return this.cards.filter((card) => card.category === this.currentTab);
+          },
+      },
+  };
 </script>
 
 <style scoped>
-.pro {
-  height: 90vh;
-  /* background: linear-gradient(90deg, rgba(227, 238, 238, 1) 0%, rgba(207, 232, 238, 1) 100%); */
-}
+  .pro {
+      height: 100vh;
+  }
 
-.text-center {
-  text-align: center;
-  margin-top: 20px;
-}
+  .text-center {
+      text-align: center;
+      margin-top: 20px;
+  }
 
-.project-card {
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  height: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  border-radius: 10px;
-  transition: transform 0.2s ease-in-out;
-}
+  .project-card {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 500px; /* Maximum width for each card */
+      margin: 0 auto;
+  }
 
-.project-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 4px 20px rgba(1, 131, 178, 0.712);
-}
-
-.overlay {
-  background: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
-  padding: 20px;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+  .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(235, 234, 234, 0.793); /* Overlay effect */
+      padding: 12px;
+      text-align: center;
+      color: rgb(4, 4, 4);
+  }
 </style>
