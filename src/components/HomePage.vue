@@ -5,8 +5,8 @@
       <v-row align="center" justify="center" class="fill-height">
           <v-col cols="12" sm="7">
               <div class="rw">
-                  <h2 class="animate__animated animate__slideInDown animate__delay-1s">Hello, I Am</h2>
-                  <h1 class="animate__animated animate__slideInDown animate__delay-1s">Rakesh Chauhan</h1>
+                  <h1 class="animate__animated animate__slideInDown animate__delay-1s">Hello, I Am</h1>
+                  <h1 class="animate__animated animate__slideInDown animate__delay-1s" style="font-size: 75px;">Rakesh Chauhan</h1>
                   <!-- <p class="animate__animated animate__slideInDown animate__delay-1s">
           I am a Software Developer Specializing in frontend Development.
         </p> -->
@@ -90,7 +90,7 @@
 
 <script>
   import AppBar from "@/Layout/AppBar.vue";
-  import resume from "@/assets/Rakesh_Chauhan_CV.pdf";
+  import resumes from "@/assets/Rakesh_Chauhan_.pdf";
 
   export default {
       components: {
@@ -121,8 +121,8 @@
           },
           downloadResume() {
               const link = document.createElement("a");
-              link.href = resume; // Use the imported path
-              link.download = "Rakesh_Chauhan_Resume.pdf";
+              link.href = resumes; // Use the imported path
+              link.download = "Rakesh_Chauhan.pdf";
               document.body.appendChild(link);
               link.click();
               document.body.removeChild(link);
@@ -156,6 +156,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+  }
+  .tt{
+    font-size: 25px;
   }
   .containe-row {
       display: flex;
