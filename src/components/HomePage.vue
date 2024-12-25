@@ -1,6 +1,6 @@
 <template>
   <AppBar />
-  <v-container fluid class="home">
+  <v-container fluid class="home" >
       <div class="transparent-layer"></div>
       <v-row align="center" justify="center" class="fill-height">
           <v-col cols="12" sm="7">
@@ -47,7 +47,7 @@
               </div>
           </v-col>
           <v-col cols="12" sm="7">
-              <h1 class="text1 ml-10">About Me</h1>
+              <h1 class="text1 ml-10"><span style="color: blue;">About</span> Me</h1>
               <p class="ml-10" justify="center">
                   Hello! I'm Rakesh Chauhan, a passionate software engineer with a strong focus on frontend development. I have a knack for turning complex problems into simple, beautiful, and intuitive designs. My journey in technology
                   started at a young age, and over the years, I have honed my skills in various programming languages and frameworks.
@@ -132,9 +132,11 @@
 </script>
 
 <style scoped>
+
   .home {
       height: 100vh;
       display: flex;
+      
       /* background-color: #dedfdf; */
       /* background: rgb(227,238,238); */
       /* background: linear-gradient(90deg, rgba(227,238,238,1) 0%, rgba(207,232,238,1) 100%, rgba(229,234,236,1) 100%, rgba(240,239,239,1) 100%); */
@@ -255,6 +257,7 @@
       width: 540px; /* Slightly larger than avatar size (500px) */
       height: 540px;
   }
+  
 
   @keyframes borderAnimation {
       0% {

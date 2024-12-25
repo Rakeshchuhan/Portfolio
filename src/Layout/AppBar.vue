@@ -7,6 +7,9 @@
     <router-link to="/Serivice">
       <v-btn text class="hover-blue" color="black">Service</v-btn>
     </router-link>
+    <router-link to="/Experience">
+      <v-btn text class="hover-blue" color="black">Experienc</v-btn>
+    </router-link>
     <router-link to="/project">
       <!-- Apply the blinking class to the Project button -->
       <v-btn text class="hover-blue blink-btn" color="black">Project</v-btn>

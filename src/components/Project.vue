@@ -205,14 +205,14 @@ export default {
   max-width: 500px;
   margin: 0 auto;
   border-radius: 15px;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 1s ease-in-out; /* Increased duration for both scale and translateY */
 }
 
 .project-card:hover {
-  transform: scale(1.05) translateY(-10px);
+  transform: scale(1.05) translateY(-20px); /* Combined scale and translateY */
   border: 5px solid #578586;
   box-shadow: 0 4px 20px rgba(96, 170, 172, 0.5);
-  transition: transform 0.3s, box-shadow 0.8s, border 0.3s;
+  transition: transform 1s ease-in-out, box-shadow 0.8s, border 0.3s;
 }
 
 .overlay {
