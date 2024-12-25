@@ -198,6 +198,17 @@ export default {
   transition: width 0.3s ease;
 }
 
+@keyframes scaleInProjectCard {
+  0% {
+    transform: translateY(20px) scale(0.9); /* Start with a small size and slight downward translation */
+    opacity: 0; /* Start with no opacity */
+  }
+  100% {
+    transform: translateY(0) scale(1); /* End with normal size and position */
+    opacity: 1; /* Full opacity */
+  }
+}
+
 .project-card {
   position: relative;
   overflow: hidden;
@@ -205,15 +216,16 @@ export default {
   max-width: 500px;
   margin: 0 auto;
   border-radius: 15px;
-  transition: transform 1s ease-in-out; /* Increased duration for both scale and translateY */
+  animation: scaleInProjectCard 1s ease-out; /* Apply the animation */
 }
 
 .project-card:hover {
-  transform: scale(1.05) translateY(-20px); /* Combined scale and translateY */
+  transform: scale(1.05) translateY(-20px); /* Combined scale and translateY for hover effect */
   border: 5px solid #578586;
   box-shadow: 0 4px 20px rgba(96, 170, 172, 0.5);
   transition: transform 1s ease-in-out, box-shadow 0.8s, border 0.3s;
 }
+
 
 .overlay {
   position: absolute; /* Ensure it overlays the parent */

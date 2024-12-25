@@ -129,6 +129,17 @@ export default {
   align-items: center;
 }
 
+@keyframes scaleIn {
+  0% {
+    transform: translateY(20px) scale(0.9); /* Start with slightly smaller size and offset */
+    opacity: 0; /* Start with no opacity */
+  }
+  100% {
+    transform: translateY(0) scale(1); /* End at normal size with no offset */
+    opacity: 1; /* Fully visible */
+  }
+}
+
 .card {
   width: 300px;
   height: 300px;
@@ -137,14 +148,15 @@ export default {
   align-items: center;
   padding: 20px;
   border-radius: 10px;
-  transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
+  animation: scaleIn 0.6s ease-out; /* Apply the animation */
 }
 
 .card:hover {
-  transform: translateY(-12px);
+  transform: translateY(-12px) scale(1.05); /* Hover effect with slight scaling and translation */
   box-shadow: 0 4px 20px rgba(1, 131, 178, 0.712);
 }
+
 
 .service-icon {
   font-size: 40px;
