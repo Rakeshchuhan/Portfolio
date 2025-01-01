@@ -149,6 +149,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: scaleIn 0.8s ease-in-out;
+    border-left: 5px solid #614caf;
   }
   
   .experience-item:hover {
