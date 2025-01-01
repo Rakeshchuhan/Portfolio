@@ -1,30 +1,80 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import vuetify from 'vite-plugin-vuetify';
-import path from 'path'; // Use ES module import for consistency
+// import { defineConfig } from 'vite'
+// import vue from '@vitejs/plugin-vue'
+// import vuetify from 'vite-plugin-vuetify'
 
+// const path = require('path')
+
+// // https://vitejs.dev/config/
+// export default defineConfig({
+//   plugins: [
+//     vue(),
+//     // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
+//     vuetify({
+//       autoImport: true,
+//     }),
+//   ],
+//   define: { 'process.env': {} },
+//   resolve: {
+//     alias: {
+//       '@': path.resolve(__dirname, 'src'),
+//     },
+//   },
+//   /* remove the need to specify .vue files https://vitejs.dev/config/#resolve-extensions
+//   resolve: {
+//     extensions: [
+//       '.js',
+//       '.json',
+//       '.jsx',
+//       '.mjs',
+//       '.ts',
+//       '.tsx',
+//       '.vue',
+//     ]
+//   },
+//   */
+// })
+
+// Plugins
+import vue from '@vitejs/plugin-vue'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+
+// Utilities
+import { defineConfig } from 'vite'
+import { fileURLToPath, URL } from 'node:url'
+
+// https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      // input: 'src/main.js',
+      // https://rollupjs.org/configuration-options
+    },
+  },
   plugins: [
-    vue(),
+    vue({ 
+      template: { transformAssetUrls }
+    }),
+    // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
     vuetify({
       autoImport: true,
     }),
   ],
-  define: { 'process.env': {} }, // Ensure compatibility with certain libraries
+  define: { 'process.env': {  } },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     },
-  },
-  build: {
-    outDir: 'dist', // Output directory for production build
-    rollupOptions: {
-      output: {
-        manualChunks: undefined, // Ensure proper chunking for SPAs
-      },
-    },
+    extensions: [
+      '.js',
+      '.json',
+      '.jsx',
+      '.mjs',
+      '.ts',
+      '.tsx',
+      '.vue',
+    ],
   },
   server: {
-    port: 3000, // Local development port
+    port: 3000,
   },
-});
+})
