@@ -90,7 +90,7 @@
 
 <script>
   import AppBar from "@/Layout/AppBar.vue";
-  import resumes from "@/assets/Rakesh_Chauhan_.pdf";
+  import resumes from "@/assets/Rakesh_Chauhan.pdf";
 
   export default {
       components: {
