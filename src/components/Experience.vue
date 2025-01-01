@@ -21,7 +21,7 @@
                     Handled live project issues, promptly resolving errors within tight deadlines while ensuring smooth user experience.
                 </p>
                 <p class="text-body-1 mt-3">
-                    Collaborated with clients to gather requirements, implementing them effectively, and developed UI designs based on wireframes.
+                    Collaborated with clients to gather requirements, implementing them effectively, and developed UI Designs based on wireframes.
                 </p>
               </div>
             </div>
