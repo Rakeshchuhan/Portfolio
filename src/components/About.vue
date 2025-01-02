@@ -18,38 +18,37 @@
               <v-card outlined class="card-custom">
                 <v-card-title class="text-sm text-md bg-primary">
                   <!-- Dynamically add icon based on title -->
-                  <v-icon class="mr-2">{{
-                    getIconForTitle(item.title)
-                  }}</v-icon>
+                  <v-icon class="mr-2">{{ getIconForTitle(item.title) }}</v-icon>
                   {{ item.title }}
                 </v-card-title>
-                <v-card-subtitle class="text-sm">{{
-                  item.institution
-                }}</v-card-subtitle>
-                <v-card-text class="text-xs text-sm">{{
-                  item.description
-                }}</v-card-text>
+                <v-card-subtitle class="text-sm">{{ item.institution }}</v-card-subtitle>
+                <v-card-text class="text-xs text-sm">{{ item.description }}</v-card-text>
               </v-card>
             </v-timeline-item>
           </v-timeline>
         </v-col>
       </v-row>
     </v-container>
+
     <v-container class="mt-10 contact-section" fluid>
-    <v-row justify="center">
-      <v-col cols="12" md="8">
-        <v-card class="d-flex align-center contact-card">
+      <v-row justify="center">
+        <v-col cols="12" sm="6" class="d-flex align-center">
           <!-- Left Section: SVG -->
           <div class="svg-container">
             <img src="@/assets/image/contact.svg" alt="Contact" class="contact-svg" />
           </div>
+        </v-col>
+
+        <v-col cols="12" sm="6" class="d-flex align-center">
           <!-- Right Section: Contact Details -->
           <div class="contact-details text-left">
             <v-card-title class="contact-title">
               <span class="ml-2">Contact Me</span>
             </v-card-title>
             <v-card-text>
-              <p class="text-lg font-bold mt-4">  <v-icon size="22" color="primary" class="mr-2">mdi-account-circle</v-icon>Rakesh Chauhan</p>
+              <p class="text-lg font-bold mt-4">
+                <v-icon size="22" color="primary" class="mr-2">mdi-account-circle</v-icon>Rakesh Chauhan
+              </p>
               <p class="text-md text-black mt-4">
                 <v-icon color="blue" class="mr-2">mdi-cellphone</v-icon>
                 8698779843
@@ -60,16 +59,16 @@
               </p>
             </v-card-text>
           </div>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+        </v-col>
+      </v-row>
+    </v-container>
+    <br>
+    <br>
   </div>
 </template>
 
 <script>
 import AppBar from "@/Layout/AppBar.vue";
-//import contact from "@/assets/image/contact.svg";
 
 export default {
   components: {
@@ -158,7 +157,6 @@ export default {
   align-items: center;
   margin-bottom: 16px;
 }
-
 
 /* Apply translateY animation to the entire page */
 .page-content {

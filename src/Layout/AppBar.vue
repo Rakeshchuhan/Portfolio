@@ -1,22 +1,24 @@
 <template>
-  <v-app-bar>
-    <v-toolbar-title>Rakesh chauhan</v-toolbar-title>
-    <router-link to="/homepage">
-      <v-btn text class="hover-blue" color="black">Home</v-btn>
-    </router-link>
-    <router-link to="/Serivice">
-      <v-btn text class="hover-blue" color="black">Service</v-btn>
-    </router-link>
-    <router-link to="/Experience">
-      <v-btn text class="hover-blue" color="black">Experience</v-btn>
-    </router-link>
-    <router-link to="/project">
-      <!-- Apply the blinking class to the Project button -->
-      <v-btn text class="hover-blue blink-btn" color="black">Project</v-btn>
-    </router-link>
-    <router-link to="/about">
-      <v-btn text class="hover-blue" color="black">About Me</v-btn>
-    </router-link>
+  <v-app-bar elevation="1">
+    <v-toolbar-title class="text-primary">Rakesh Chauhan</v-toolbar-title>
+    <div class="scrollable-links">
+      <router-link to="/homepage">
+        <v-btn text class="hover-blue" color="black">Home</v-btn>
+      </router-link>
+      <router-link to="/Serivice">
+        <v-btn text class="hover-blue" color="black">Service</v-btn>
+      </router-link>
+      <router-link to="/Experience">
+        <v-btn text class="hover-blue" color="black">Experience</v-btn>
+      </router-link>
+      <router-link to="/project">
+        <!-- Apply the blinking class to the Project button -->
+        <v-btn text class="hover-blue blink-btn" color="black">Project</v-btn>
+      </router-link>
+      <router-link to="/about">
+        <v-btn text class="hover-blue" color="black">About Me</v-btn>
+      </router-link>
+    </div>
   </v-app-bar>
 </template>
 
@@ -46,5 +48,29 @@ export default {
 
 .blink-btn {
   animation: blink-animation 1s infinite;
+}
+
+/* Make the links scrollable */
+.scrollable-links {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px; /* Space between buttons */
+  padding: 8px;
+  flex-wrap: nowrap;
+}
+
+.scrollable-links a {
+  white-space: nowrap; /* Prevent the text from wrapping */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .scrollable-links {
+    padding: 4px; /* Adjust padding for mobile */
+  }
+
+  .v-btn {
+    font-size: 14px; /* Make buttons smaller on mobile */
+  }
 }
 </style>

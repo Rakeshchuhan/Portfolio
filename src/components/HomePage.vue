@@ -90,7 +90,7 @@
 
 <script>
   import AppBar from "@/Layout/AppBar.vue";
-  import resumes from "@/assets/Rakesh_Chauhan.pdf";
+  import resumes from "@/assets/Rakesh Chauhan_resume__.pdf";
 
   export default {
       components: {
@@ -257,7 +257,7 @@
       width: 540px; /* Slightly larger than avatar size (500px) */
       height: 540px;
   }
-  
+ 
 
   @keyframes borderAnimation {
       0% {
@@ -275,4 +275,20 @@
       border: 5px solid white; /* White border for contrast */
       border-radius: 50%;
   }
+
+ @media (max-width: 600px)  {
+    .home1{
+        width: 100%;
+         margin-top: 300px!important;
+    }
+    
+ }
+ @media (max-width: 1400px)  {
+    .home{
+         display: flex;
+         width: 100%;
+        margin-right: 20px!important;
+    }
+    
+ }
 </style>
