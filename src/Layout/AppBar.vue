@@ -1,6 +1,6 @@
 <template>
   <v-app-bar elevation="1">
-    <v-toolbar-title class="text-primary">Rakesh Chauhan</v-toolbar-title>
+    <v-toolbar-title class="text-indigo bb">Rakesh Chauhan</v-toolbar-title>
     <div class="scrollable-links">
       <router-link to="/homepage">
         <v-btn text class="hover-blue" color="black">Home</v-btn>
@@ -31,6 +31,10 @@ export default {
 <style scoped>
 .hover-blue:hover {
   color: blue !important; /* Set the text color to blue on hover */
+}
+.bb {
+  font-weight: bold;
+  font-size: large;
 }
 
 /* Blinking effect for the Project button */

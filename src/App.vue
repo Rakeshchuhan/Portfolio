@@ -39,4 +39,13 @@ export default {
     min-width:200vw;
   }
 }
+
+@media screen and (max-width: 1400px) 
+{ 
+  .main {
+    background: linear-gradient(to bottom, rgb(234, 245, 245) 0%, rgb(215, 244, 250) 100%, rgba(229,234,236,1) 100%, rgba(240,239,239,1) 100%); 
+    min-width:160vw ;
+  }
+
+}
 </style>
