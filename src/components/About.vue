@@ -30,45 +30,80 @@
       </v-row>
     </v-container>
 
-    <v-container class="mt-10 contact-section" fluid>
-      <v-row justify="center">
-        <v-col cols="12" sm="6" class="d-flex align-center">
-          <!-- Left Section: SVG -->
-          <div class="svg-container">
-            <img src="@/assets/image/contact.svg" alt="Contact" class="contact-svg" />
-          </div>
-        </v-col>
-
-        <v-col cols="12" sm="6" class="d-flex align-center">
-          <!-- Right Section: Contact Details -->
-          <div class="contact-details text-left">
-            <v-card-title class="contact-title">
-              <span class="ml-2">Contact Me</span>
+    <div class="page-content">
+      <v-container fluid class="d-flex align-center justify-center">
+    <v-row justify="center">
+      <v-col cols="12" sm="8">
+        <h1 class="text-center mb-4">Contact Me</h1>
+        <div class="rounded-card">
+          <v-form ref="form" v-model="isValid">
+            <v-row justify="center pa-8">
+              <v-col cols="12" sm="12">
+                <v-text-field label="Name" type="text" name="name" prepend-inner-icon="mdi-account" v-model="formData.name" required variant="solo" :rules="[requiredRule]" />
+              </v-col>
+              <v-col cols="12" sm="12">
+                <v-text-field label="Email" type="email" name="email" prepend-inner-icon="mdi-email" :rules="[requiredRule, emailRule]" v-model="formData.email" required variant="solo" />
+              </v-col>
+              <v-col cols="12" sm="12">
+                <v-textarea label="Description" name="description" prepend-inner-icon="mdi-pencil" required variant="solo" :rules="[requiredRule]" v-model="formData.description"></v-textarea>
+              </v-col>
+              <v-col cols="12">
+                <v-btn
+                  :disabled="!isValid || isLoading"
+                  color="primary"
+                  block
+                  @click="handleSubmit"
+                >
+                  <v-progress-circular
+                    v-if="isLoading"
+                    indeterminate
+                    color="white"
+                    size="24"
+                    width="3"
+                  ></v-progress-circular>
+                  <span v-if="!isLoading">Send</span>
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-form>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
+  <!-- Success Dialog -->
+  <v-dialog v-model="successDialog" max-width="400px">
+    <v-card>
+            <v-card-title class="text-center">
+              <v-icon color="green" large>mdi-check-circle</v-icon>
             </v-card-title>
-            <v-card-text>
-              <p class="text-lg font-bold mt-4">
-                <v-icon size="22" color="primary" class="mr-2">mdi-account-circle</v-icon>Rakesh Chauhan
-              </p>
-              <p class="text-md text-black mt-4">
-                <v-icon color="blue" class="mr-2">mdi-cellphone</v-icon>
-                8698779843
-              </p>
-              <p class="text-md text-black mt-2">
-                <v-icon color="blue" class="mr-2">mdi-email</v-icon>
-                findrakesh09@gmail.com
-              </p>
+            <v-card-text class="text-center">
+              Your message has been sent successfully!
             </v-card-text>
-          </div>
-        </v-col>
-      </v-row>
-    </v-container>
-    <br>
-    <br>
+            <v-card-actions>
+              <v-btn color="primary" block @click="successDialog = false">OK</v-btn>
+            </v-card-actions>
+          </v-card>
+
+    </v-dialog>
+
+    <!-- Error Dialog -->
+    <v-dialog v-model="errorDialog" max-width="400px">
+      <v-card>
+        <v-card-title class="headline">Error</v-card-title>
+        <v-card-text>Failed to send email. Please try again.</v-card-text>
+        <v-card-actions>
+          <v-btn color="primary" @click="errorDialog = false">Close</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+</div>
+
   </div>
 </template>
 
 <script>
 import AppBar from "@/Layout/AppBar.vue";
+import emailjs from "emailjs-com";
 
 export default {
   components: {
@@ -106,6 +141,18 @@ export default {
           color: "red-lighten-1",
         },
       ],
+      formData: {
+        name: "", 
+        email: "",
+        description: "",
+      },
+      isLoading : false,
+      isValid: false,
+      // showDialog: false,
+      successDialog: false, // Controls the success dialog visibility
+      errorDialog: false,    // Controls the error dialog visibility
+      requiredRule: (v) => !!v || "This field is required",
+      emailRule: (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     };
   },
   methods: {
@@ -120,11 +167,78 @@ export default {
 
       return icons[title] || "mdi-education"; // Default icon if no match
     },
+   
+    handleSubmit() {
+      // Simulate saving data
+      console.log("Form Submitted", this.formData);
+      this.showDialog = true;
+
+      // Reset form
+      this.$refs.form.reset();
+    },
+    closeDialog() {
+      this.showDialog = false;
+    },
+
+    async handleSubmit() {
+      if (this.isValid) {
+        this.isLoading = true;
+        const templateParams = {
+          to_name: this.formData.name,
+          from_name: this.formData.email,
+          message: this.formData.description
+        };
+
+        try {
+          const result = await emailjs.send(
+            "service_030zstg", // Replace with your EmailJS service ID
+            "template_aw30jzi", // Replace with your EmailJS template ID
+            templateParams,
+            "8rv36g8qeQcBnyE4Q" // Replace with your EmailJS public key
+          );
+          this.successDialog = true;
+          this.$refs.form.reset();  // Reset the form to clear the validation and data
+          this.isValid = false;  
+        } catch (error) {
+          this.errorDialog = true;
+          console.error("EmailJS Error:", error);
+        } finally {
+          this.isLoading = false; // Hide loader after submission is finished
+        }
+      }
+    }
   },
 };
 </script>
 
 <style scoped>
+  .rounded-card {
+    border-radius: 16px; /* Adjust this value for your preference */
+  }
+
+  .text-success {
+  color: #4caf50;
+  font-weight: bold;
+}
+.page-content {
+  animation: translateYAnimation 1s ease-out;
+}
+
+.text-center {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@keyframes translateYAnimation {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 .contact-svg {
   max-width: 550px !important;
   height: auto;
