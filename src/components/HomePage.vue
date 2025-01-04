@@ -64,7 +64,7 @@
                   </p>
                   <p class="ml-10 d-flex align-center">
                       <v-icon color="#086ba8" small>mdi-email</v-icon>
-                      <span class="ab">Email id: </span> <span class="ab"> findrakes09@gmail.com</span>
+                      <span class="ab">Email id: </span> <span class="ab"> findrakesh09@gmail.com</span>
                   </p>
               </div>
           </v-col>

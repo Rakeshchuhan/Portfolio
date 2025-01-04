@@ -71,13 +71,19 @@
     </v-row>
   </v-container>
   <!-- Success Dialog -->
-  <v-dialog v-model="successDialog" max-width="400px">
+  <v-dialog v-model="successDialog" max-width="500px">
     <v-card>
             <v-card-title class="text-center">
-              <v-icon color="green" large>mdi-check-circle</v-icon>
+              <!-- <v-icon color="green" large>mdi-check-circle</v-icon> -->
+               <center>
+                <v-img src="https://media.tenor.com/AWKzZ19awFYAAAAi/checkmark-transparent.gif" height="200"
+               width="200"></v-img>
+               </center>
+               
             </v-card-title>
             <v-card-text class="text-center">
-              Your message has been sent successfully!
+              <h1>Thank You!</h1>
+              Your details has been successfully submitted.Thanks!
             </v-card-text>
             <v-card-actions>
               <v-btn color="primary" block @click="successDialog = false">OK</v-btn>
@@ -87,10 +93,21 @@
     </v-dialog>
 
     <!-- Error Dialog -->
-    <v-dialog v-model="errorDialog" max-width="400px">
+    <v-dialog v-model="errorDialog" max-width="600px">
       <v-card>
-        <v-card-title class="headline">Error</v-card-title>
-        <v-card-text>Failed to send email. Please try again.</v-card-text>
+        <v-avatar size="320" class="mx-auto elevation-0 mt-4 ">
+          <v-img src="https://media4.giphy.com/media/7s12pEZorHtU3gcqDn/giphy.gif?cid=6c09b952f7kr0upa93g6amg6bi7olrfa52ee28obujee2zwt&ep=v1_gifs_search&rid=giphy.gif&ct=g" height="400"
+          width="300"></v-img>
+        </v-avatar>   
+        <v-card-text class="text-center">
+          Failed to send email. Please try again.
+          <v-icon color="red" large>mdi-alert-circle</v-icon>
+        </v-card-text>
+        <h5 class="text-center">OR</h5>
+        <v-card-text class="text-center">
+         You can contact me on whatsapp number : 8698779843 
+          <v-icon color="green" large>mdi-whatsapp</v-icon>
+        </v-card-text>
         <v-card-actions>
           <v-btn color="primary" @click="errorDialog = false">Close</v-btn>
         </v-card-actions>
@@ -117,24 +134,24 @@ export default {
           description: "Dattakala Group of Institute of Technology",
           institution: "2020",
           year: 2020,
-          color: "purple-lighten-2",
+          color: "red-lighten-1",
         },
         {
           title: "Diploma in Electrical Engineering",
           description: "Dattakala Polytechnic",
           institution: "2027",
           year: 2017,
-          color: "amber-lighten-1",
+          color: "red-lighten-1",
         },
         {
-          title: "HSC",
+          title: "Higher Secondary Certificate",
           description: "T.C. College",
           institution: "2011",
           year: 2011,
           color: "cyan-lighten-1",
         },
         {
-          title: "SSC",
+          title: "Secondary School Certificate",
           description: "Shir Chhtrapati English Medium School",
           institution: "2010",
           year: 2010,
@@ -161,8 +178,8 @@ export default {
       const icons = {
         "BE in Electrical Engineering": "mdi-lightbulb-on",
         "Diploma in Electrical Engineering": "mdi-cog",
-        HSC: "mdi-school",
-        SSC: "mdi-school",
+        "Higher Secondary Certificate": "mdi-school",
+        "Secondary School Certificate": "mdi-school",
       };
 
       return icons[title] || "mdi-education"; // Default icon if no match
@@ -243,34 +260,9 @@ export default {
   max-width: 550px !important;
   height: auto;
 }
-.contact-section {
-  padding: 2rem 0;
-}
 
-.contact-card {
-  padding: 16px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
 
-.svg-container {
-  flex: 1;
-  text-align: center;
-}
 
-.contact-details {
-  flex: 2;
-  padding-left: 24px;
-}
-
-.contact-title {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-}
 
 /* Apply translateY animation to the entire page */
 .page-content {
@@ -281,27 +273,15 @@ export default {
 .card-custom {
   border-radius: 16px; /* Rounded corners */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Scale on hover */
+  display: inline-block; /* Ensure cards shrink to fit content */
+  max-width: calc(100% - 32px); /* Prevent overflow */
+
 }
 
 .card-custom:hover {
   transform: scale(1.05); /* Scale the card on hover */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
-}
-
-.text-lg {
-  font-size: 1.25rem;
-}
-
-.text-md {
-  font-size: 1rem;
-}
-
-.mt-4 {
-  margin-top: 16px;
-}
-
-.mt-2 {
-  margin-top: 8px;
+  
 }
 
 @media screen and (max-width: 600px) {
