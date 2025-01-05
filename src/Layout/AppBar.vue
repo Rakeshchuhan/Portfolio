@@ -16,7 +16,7 @@
         <v-btn text class="hover-blue blink-btn" color="black">Project</v-btn>
       </router-link>
       <router-link to="/about">
-        <v-btn text class="hover-blue" color="black">About Me</v-btn>
+        <v-btn text class="hover-blue" color="black">About & Contact</v-btn>
       </router-link>
     </div>
   </v-app-bar>

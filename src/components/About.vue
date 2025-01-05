@@ -10,23 +10,28 @@
           :key="index"
         >
           <v-card class="timeline-content elevation-5">
-            <h3 ><v-chip color="green" variant="flat">{{ event.year }}</v-chip> - {{ event.title }}</h3>
+            <h3>{{ event.title }}</h3>
             <p>{{ event.description }}</p>
+            <v-chip color="green" variant="flat">{{ event.year }}</v-chip>
           </v-card>
         </div>
       </div>
       <v-divider class="mt-10 pr-20 pl-20"></v-divider>
     </v-container>
-   
 
-    <div class="page-content">
+    <div class="page-content ma-15">
+      <h1 class="text-center mb-4">Contact Me</h1>
       <v-container fluid class="d-flex align-center justify-center">
         <v-row justify="center">
-          <v-col cols="12" sm="8">
-            <h1 class="text-center mb-4">Contact Me</h1>
+          <v-col col="12" sm="6">
+            <div>
+              <v-img src="@/assets/image/contact.svg"></v-img>
+            </div>
+          </v-col>
+          <v-col cols="12" sm="6">
             <div class="rounded-card">
               <v-form ref="form" v-model="isValid">
-                <v-row justify="center pa-8">
+                <v-row justify="center">
                   <v-col cols="12" sm="12">
                     <v-text-field
                       label="Name"
@@ -76,7 +81,10 @@
                         size="24"
                         width="3"
                       ></v-progress-circular>
-                      <span v-if="!isLoading">Send</span>
+                      <template v-if="!isLoading">
+                        <v-icon class="mr-2">mdi-telegram</v-icon>
+                        <span>Send</span>
+                      </template>
                     </v-btn>
                   </v-col>
                 </v-row>
@@ -193,7 +201,6 @@ export default {
     };
   },
   methods: {
-   
     handleSubmit() {
       // Simulate saving data
       console.log("Form Submitted", this.formData);
@@ -233,6 +240,13 @@ export default {
         }
       }
     },
+    onSuccessDialogToggle(isVisible) {
+    if (isVisible) {
+      const audio = this.$refs.successAudio;
+      audio.currentTime = 0; // Restart the music if already played
+      audio.play();
+    }
+  },
   },
 };
 </script>
@@ -265,7 +279,7 @@ export default {
   border: 1px solid #0b72e0;
 }
 .timeline-event :hover {
- background-color: #D9EAFD;
+  background-color: #d9eafd;
 }
 .timeline-event h3 {
   margin: 0 0 5px;
