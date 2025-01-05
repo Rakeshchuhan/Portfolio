@@ -75,6 +75,14 @@ import gspImage from "@/assets/image/gsp.jpeg";
 import gsptableImage from "@/assets/image/gsptable.jpeg";
 import form3Image from "@/assets/image/form3.jpeg";
 import card from "@/assets/image/card.jpeg";
+import cardsscrm from "@/assets/image/cardsscrm.jpeg";
+import edit from "@/assets/image/edit.jpeg";
+import edit1 from "@/assets/image/edit1.jpeg";
+import edit3 from "@/assets/image/edit3.jpeg";
+import edit4 from "@/assets/image/edit4.jpeg";
+import edit5 from "@/assets/image/edit5.jpeg";
+import edit6 from "@/assets/image/edit6.jpeg";
+import delete1 from "@/assets/image/delete.jpeg";
 
 export default {
   components: {
@@ -143,6 +151,62 @@ export default {
           title: "Login Page",
           description: "Login page Module",
           image: loginImage,
+          date: "2024-07-01",
+          category: "latest",
+        },
+        {
+          title: "Login Page",
+          description: "Edit Dialogbox Module",
+          image: edit,
+          date: "2024-07-01",
+          category: "latest",
+        },
+        {
+          title: "Login Page",
+          description: "Delete Dialogbox Module",
+          image: delete1,
+          date: "2024-07-01",
+          category: "latest",
+        },
+        {
+          title: "Login Page",
+          description: "Edit Dialogbox Module",
+          image: edit1,
+          date: "2024-07-01",
+          category: "latest",
+        },
+        {
+          title: "Login Page",
+          description: "Edit Dialogbox Module",
+          image: edit3,
+          date: "2024-07-01",
+          category: "latest",
+        },
+        {
+          title: "Login Page",
+          description: "Edit Dialogbox Module",
+          image: edit5,
+          date: "2024-07-01",
+          category: "latest",
+        },
+        {
+          title: "Login Page",
+          description: "Edit Dialogbox Module",
+          image: edit6,
+          date: "2024-07-01",
+          category: "latest",
+        },
+        {
+          title: "Login Page",
+          description: "Edit Dialogbox Module",
+          image: edit4,
+          date: "2024-07-01",
+          category: "latest",
+        },
+        {
+          title: "Crad",
+          description: "Card Module",
+          image: cardsscrm,
           date: "2024-07-01",
           category: "latest",
         },
