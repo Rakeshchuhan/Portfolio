@@ -41,7 +41,7 @@
       </v-col>
       <v-divider class="mt-10"></v-divider>
     </v-row>
-  
+
     <br />
     <br />
     <h1 class="text-center">My <span color="primary">Skill</span></h1>
@@ -60,20 +60,24 @@
         ></v-progress-linear>
       </v-col>
 
-      <!-- <v-col cols="12" sm="6" v-for="skill in circularSkills" :key="skill.name">
-        <div class="circular-skill">
-          <v-progress-circular
-            :size="100"
-            :width="10"
-            :value="skill.percentage"
-            :color="getCircularColor(skill.percentage)"
-          >
-            <span class="circular-text">{{ skill.percentage }}%</span>
-          </v-progress-circular>
-          <h4 class="text-center mt-2">{{ skill.name }}</h4>
-        </div>
-      </v-col> -->
+      <v-divider class="mt-10"></v-divider>
     </v-row>
+    <div class="text-center mt-10">
+        <h1 >My <span color="primary">Tools</span></h1>
+      <v-row class="mt-5 d-flex justify-center">
+        <v-col
+          cols="12"
+          sm="4"
+          md="2"
+          v-for="tool in tools"
+          :key="tool.name"
+          class="text-center"
+        >
+        <v-img :src="tool.icon" class="tool-icon mb-3" />
+          <h4>{{ tool.name }}</h4>
+        </v-col>
+      </v-row>
+      </div>
   </v-container>
 </template>
 
@@ -95,12 +99,32 @@ export default {
         { name: "Flutter", percentage: 70 },
         { name: "Java", percentage: 65 },
       ],
-      // circularSkills: [
-      //   { name: "Team Work", percentage: 80 },
-      //   { name: "Project Management", percentage: 75 },
-      //   { name: "Creativity", percentage: 85 },
-      //   { name: "Communication", percentage: 90 },
-      // ],
+      tools: [
+        {
+          name: "Visual Studio Code",
+          icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png",
+        },
+        {
+          name: "IntelliJ IDEA",
+          icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/IntelliJ_IDEA_Icon.svg/768px-IntelliJ_IDEA_Icon.svg.png",
+        },
+        {
+          name: "XAMPP",
+          icon: "https://images.seeklogo.com/logo-png/27/1/xampp-logo-png_seeklogo-274098.png?v=1957300462896250240",
+        },
+        {
+          name: "Sourcetree",
+          icon: "https://static-00.iconduck.com/assets.00/sourcetree-icon-1626x2048-87bhm33f.png",
+        },
+        {
+          name: "Postman",
+          icon: "https://www.svgrepo.com/show/354202/postman-icon.svg",
+        },
+        {
+          name: "GitHub",
+          icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ei-sc-github.svg/1024px-Ei-sc-github.svg.png",
+        },
+      ],
     };
   },
   methods: {
@@ -122,6 +146,16 @@ export default {
 </script>
 
 <style scoped>
+.tool-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+h4 {
+  font-size: 16px;
+  font-weight: bold;
+}
 .ser {
   display: flex;
   flex-direction: column;
@@ -156,7 +190,6 @@ export default {
   transform: translateY(-12px) scale(1.05); /* Hover effect with slight scaling and translation */
   box-shadow: 0 4px 20px rgba(1, 131, 178, 0.712);
 }
-
 
 .service-icon {
   font-size: 40px;
@@ -210,5 +243,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media screen and (max-width: 600px) { 
+  .ser {
+  
+    height: 100vh;
+  }
+}
+@media screen and (max-width: 1368px) { 
+  .ser {
+  
+    height: 200vh;
+  }
 }
 </style>
