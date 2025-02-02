@@ -21,7 +21,7 @@
                   <div class="avatar-border large">
                       <v-avatar size="500" class="mx-auto elevation-15">
                           <v-img
-                              src="https://scontent.fpnq6-1.fna.fbcdn.net/v/t1.6435-9/96515113_2994043227377812_5094914266369097728_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=hfgHDI-YBWUQ7kNvgEpe2jC&_nc_zt=23&_nc_ht=scontent.fpnq6-1.fna&_nc_gid=A2BjS5YTtFFnQD9uCj1z2IA&oh=00_AYC6Phd2u78tiAX9BHDHhS-bMrkVP5KmdH978s-o5otOlg&oe=67869488"
+                               src="@/assets/image/rakesh.jpg"
                               height="700"
                               width="700"
                           ></v-img>
@@ -38,7 +38,7 @@
                   <div class="avatar-border small">
                       <v-avatar size="300" class="mx-auto elevation-15">
                           <v-img
-                              src="https://scontent.fpnq6-1.fna.fbcdn.net/v/t1.6435-9/96515113_2994043227377812_5094914266369097728_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=hfgHDI-YBWUQ7kNvgEpe2jC&_nc_zt=23&_nc_ht=scontent.fpnq6-1.fna&_nc_gid=A2BjS5YTtFFnQD9uCj1z2IA&oh=00_AYC6Phd2u78tiAX9BHDHhS-bMrkVP5KmdH978s-o5otOlg&oe=67869488"
+                              src="@/assets/image/rakesh.jpg"
                               height="700"
                               width="700"
                           ></v-img>
@@ -92,12 +92,14 @@
   import AppBar from "@/Layout/AppBar.vue";
   import resumes from "@/assets/Rakesh Chauhan_resume__.pdf";
 
+
   export default {
       components: {
           AppBar,
       },
       data() {
           return {
+          
               fullText: "I am a Software Developer Specializing in frontend Development.",
               typewriterText: "", // Initially empty
           };
