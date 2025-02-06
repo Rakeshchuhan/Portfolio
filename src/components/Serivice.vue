@@ -4,7 +4,7 @@
     <h1 class="text-center">My <span color="primary">Service</span></h1>
     <v-row class="mt-10">
       <!-- Services Section -->
-      <v-col cols="12" md="4">
+      <v-col cols="12" sm="4" md="4">
         <v-card class="card">
           <v-icon class="service-icon web-icon">mdi-web</v-icon>
           <h3>Web Design</h3>
@@ -16,7 +16,7 @@
         </v-card>
       </v-col>
 
-      <v-col cols="12" md="4">
+      <v-col cols="12" sm="4" md="4">
         <v-card class="card">
           <v-icon class="service-icon app-icon">mdi-cellphone</v-icon>
           <h3>App Development</h3>
@@ -28,7 +28,7 @@
         </v-card>
       </v-col>
 
-      <v-col cols="12" md="4">
+      <v-col cols="12" sm="4" md="4">
         <v-card class="card">
           <v-icon class="service-icon uiux-icon">mdi-palette</v-icon>
           <h3>UI/UX Design</h3>
@@ -244,16 +244,5 @@ h4 {
   flex-direction: column;
   align-items: center;
 }
-@media screen and (max-width: 600px) { 
-  .ser {
-  
-    height: 100vh;
-  }
-}
-@media screen and (max-width: 1368px) { 
-  .ser {
-  
-    height: 200vh;
-  }
-}
+
 </style>
